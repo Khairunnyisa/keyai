@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="asset/logo.png" type="image/x-icon" />
     <title>Chat sama Keyo - Key AI</title>
-     <!-- Bootstrap -->
-     <link rel="stylesheet" href="css/bootstrap.min.css">
-     <!-- css -->
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <!-- css -->
     <link rel="stylesheet" href="chat.css" />
   </head>
   <body>
@@ -14,115 +15,99 @@
       <div class="background position-absolute"></div>
       <div class="container d-flex align-items-center justify-content-center vh-100">
         <div class="chat-container position-absolute">
-            <div class="chat-box" id="chat-box">
-              <div class="bot-header d-flex align-items-center gap-3 py-2 px-3 mb-3 top-0">
-                <img src="asset/img-profile.svg" alt="" >
-                <h4 class="m-0">Keyo baik hati</h4>
-              </div>
+          <div class="chat-box" id="chat-box">
+            <div class="bot-header d-flex align-items-center gap-3 py-2 px-3 mb-3 top-0">
+              <img src="asset/img-profile.svg" alt="" />
+              <h4 class="m-0">Keyo baik hati</h4>
             </div>
-            <input type="text" id="user-input" placeholder="Tanyakan sesuatu ke Keyo..." />
-            <button onclick="sendMessage()" id="sendBtn">Kirim</button>
+          </div>
+          <input type="text" id="user-input" placeholder="Tanyakan sesuatu ke Keyo..." />
+          <button onclick="sendMessage()" id="sendBtn">Kirim</button>
         </div>
       </div>
     </section>
     <script src="script.js"></script>
 
     <script>
-        const chatBox = document.getElementById('chat-box');
-const userInput = document.getElementById('user-input');
+      const chatBox = document.getElementById("chat-box");
+      const userInput = document.getElementById("user-input");
 
-const sendButton = document.getElementById('sendBtn');
-sendButton.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        sendMessage();
-    }
-});
+      const sendButton = document.getElementById("sendBtn");
+      sendButton.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          sendMessage();
+        }
+      });
 
-userInput.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        sendMessage();
-    }
-});
+      userInput.addEventListener("keypress", function (e) {
+        if (e.key === "Enter") {
+          sendMessage();
+        }
+      });
 
-function sendMessage() {
-    const message = userInput.value;
-    if (!message) return;
+      function sendMessage() {
+        const message = userInput.value;
+        if (!message) return;
 
-    const userDiv = document.createElement('div');
-    const userMessage = document.createElement('p');
+        const userDiv = document.createElement("div");
+        const userMessage = document.createElement("p");
 
-    userMessage.className = 'message user-message';
-    userDiv.className = 'user-div';
-    userDiv.textContent = message;
+        userMessage.className = "message user-message";
+        userDiv.className = "user-div";
+        userDiv.textContent = message;
 
-    chatBox.appendChild(userMessage);
-    userInput.value = '';
+        chatBox.appendChild(userMessage);
+        userInput.value = "";
 
-    const botResponse = getBotResponse(message);
-    const botDiv = document.createElement('div');
-    const botMessage = document.createElement('p');
+        const botResponse = getBotResponse(message);
+        const botDiv = document.createElement("div");
+        const botMessage = document.createElement("p");
 
-    botMessage.className = 'message bot-message';
-    botDiv.className = 'bot-div';
-    botDiv.textContent = botResponse;
+        botMessage.className = "message bot-message";
+        botDiv.className = "bot-div";
+        botDiv.textContent = botResponse;
 
-    userMessage.appendChild(userDiv);
-    botMessage.appendChild(botDiv);
-    chatBox.appendChild(botMessage);
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
+        userMessage.appendChild(userDiv);
+        botMessage.appendChild(botDiv);
+        chatBox.appendChild(botMessage);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }
 
-function getBotResponse(message) {
-    const responses = {
-        'greetings': [
-            'Halo! Saya di sini untuk membantu Anda menemukan jawaban. Ada yang bisa saya bantu?',
-            'Hai! Bagaimana saya bisa membantu Anda dalam belajar?',
-            'Halo! Sedang mencari jawaban? Saya bisa membantu dengan itu!'
-        ],
-        'math': [
-            'Biarkan saya membantu Anda dengan soal matematika tersebut. Mohon berikan detailnya.',
-            'Saya pandai dalam hitungan! Ada pertanyaan matematika apa yang Anda miliki?',
-            'Matematika bisa sulit. Bagikan soalnya, dan saya akan berusaha membantu!'
-        ],
-        'science': [
-            'Sains sangat menarik! Topik sains apa yang ingin Anda ketahui?',
-            'Sains bisa kompleks. Apa pertanyaan spesifik yang Anda miliki?',
-            'Saya suka sains! Mari kita jelajahi pertanyaan sains bersama.'
-        ],
-        'history': [
-            'Sejarah penuh dengan kisah menarik. Peristiwa sejarah apa yang ingin Anda pelajari?',
-            'Sejarah adalah salah satu kegemaran saya. Era atau tokoh sejarah apa yang Anda minati?',
-            'Saya menikmati sejarah. Tanyakan apa pun tentang masa lalu, dan saya akan mencoba menjawab!'
-        ],
-        'thanks': [
-            'Sama-sama! Jika Anda membutuhkan bantuan lebih lanjut, jangan ragu untuk bertanya.',
-            'Tidak masalah! Beritahu saya jika ada yang lain yang bisa saya bantu.',
-            'Senang bisa membantu Anda!'
-        ],
-        'default': [
-            'Maaf, saya tidak mengerti. Silakan tanyakan pertanyaan lain.',
-            'Tolong maaf, saya tidak bisa memberikan jawaban atas pertanyaan tersebut.',
-            'Mohon maaf, saya tidak bisa membantu dengan pertanyaan itu.'
-        ]
-    };
+      function getBotResponse(message) {
+        const responses = {
+          greetings: ["Halo! Saya di sini untuk membantu Anda menemukan jawaban. Ada yang bisa saya bantu?", "Hai! Bagaimana saya bisa membantu Anda dalam belajar?", "Halo! Sedang mencari jawaban? Saya bisa membantu dengan itu!"],
+          math: [
+            "Biarkan saya membantu Anda dengan soal matematika tersebut. Mohon berikan detailnya.",
+            "Saya pandai dalam hitungan! Ada pertanyaan matematika apa yang Anda miliki?",
+            "Matematika bisa sulit. Bagikan soalnya, dan saya akan berusaha membantu!",
+          ],
+          science: ["Sains sangat menarik! Topik sains apa yang ingin Anda ketahui?", "Sains bisa kompleks. Apa pertanyaan spesifik yang Anda miliki?", "Saya suka sains! Mari kita jelajahi pertanyaan sains bersama."],
+          history: [
+            "Sejarah penuh dengan kisah menarik. Peristiwa sejarah apa yang ingin Anda pelajari?",
+            "Sejarah adalah salah satu kegemaran saya. Era atau tokoh sejarah apa yang Anda minati?",
+            "Saya menikmati sejarah. Tanyakan apa pun tentang masa lalu, dan saya akan mencoba menjawab!",
+          ],
+          thanks: ["Sama-sama! Jika Anda membutuhkan bantuan lebih lanjut, jangan ragu untuk bertanya.", "Tidak masalah! Beritahu saya jika ada yang lain yang bisa saya bantu.", "Senang bisa membantu Anda!"],
+          default: ["Maaf, saya tidak mengerti. Silakan tanyakan pertanyaan lain.", "Tolong maaf, saya tidak bisa memberikan jawaban atas pertanyaan tersebut.", "Mohon maaf, saya tidak bisa membantu dengan pertanyaan itu."],
+        };
 
-    if (message.toLowerCase().includes('matematika')) {
-        return getRandomResponse(responses['math']);
-    } else if (message.toLowerCase().includes('sains')) {
-        return getRandomResponse(responses['science']);
-    } else if (message.toLowerCase().includes('sejarah')) {
-        return getRandomResponse(responses['history']);
-    } else if (message.toLowerCase().includes('terima kasih') || message.toLowerCase().includes('thanks')) {
-        return getRandomResponse(responses['thanks']);
-    } else {
-        return getRandomResponse(responses['greetings']);
-    }
-}
+        if (message.toLowerCase().includes("matematika")) {
+          return getRandomResponse(responses["math"]);
+        } else if (message.toLowerCase().includes("sains")) {
+          return getRandomResponse(responses["science"]);
+        } else if (message.toLowerCase().includes("sejarah")) {
+          return getRandomResponse(responses["history"]);
+        } else if (message.toLowerCase().includes("terima kasih") || message.toLowerCase().includes("thanks")) {
+          return getRandomResponse(responses["thanks"]);
+        } else {
+          return getRandomResponse(responses["greetings"]);
+        }
+      }
 
-function getRandomResponse(responses) {
-    const randomIndex = Math.floor(Math.random() * responses.length);
-    return responses[randomIndex];
-}
+      function getRandomResponse(responses) {
+        const randomIndex = Math.floor(Math.random() * responses.length);
+        return responses[randomIndex];
+      }
     </script>
   </body>
 </html>
